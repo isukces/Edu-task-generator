@@ -1,0 +1,28 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ui="clr-namespace:XEducation.Ui">
+    <FontFamily x:Key="AppFont">Ebrima</FontFamily>
+    <ui:PackIconImageSourceConverter x:Key="PackIconImageSourceConverter" />
+
+    <Style TargetType="TextBlock" x:Key="PageTitle">
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="Foreground" Value="DodgerBlue" />
+        <Setter Property="Margin" Value="10" />
+        <Setter Property="FontFamily" Value="{StaticResource AppFont}"></Setter>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="Header">
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="Margin" Value="10,0,0,5" />
+        <Setter Property="FontStyle" Value="Italic"></Setter>
+        <Setter Property="TextDecorations" Value="Underline"></Setter>
+        <Setter Property="FontFamily" Value="{StaticResource AppFont}"></Setter>
+    </Style>
+    <!--
+    <Style TargetType="RibbonButton">
+        <Setter Property="FontFamily" Value="Calibri Light"></Setter>
+    </Style>
+    -->
+    <Style TargetType="Ribbon">
+        <Setter Property="FontFamily" Value="{StaticResource AppFont}"></Setter>
+    </Style>
+</ResourceDictionary>

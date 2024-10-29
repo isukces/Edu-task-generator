@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="iSukces.Translation" Version="1.24.1016.13" />
+      <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="5.1.0" />
+      <PackageReference Include="MahApps.Metro.IconPacks.PhosphorIcons" Version="5.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="Ui\IconConverters.tt">
+        <Generator>TextTemplatingFileGenerator</Generator>
+        <LastGenOutput>IconConverters.cs</LastGenOutput>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Ui\IconConverters.cs">
+        <AutoGen>True</AutoGen>
+        <DesignTime>True</DesignTime>
+        <DependentUpon>IconConverters.tt</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+</Project>
