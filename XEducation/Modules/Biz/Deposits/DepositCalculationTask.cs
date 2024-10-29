@@ -108,7 +108,7 @@ public class DepositCalculationTask:DepositCalculationTaskBase
             Br(),
             "Długość lokaty: ", Number(Length, 0), " " + MonthsNoun(Length),
             Br(),
-            "Kapitalizacja: ", Number(CapitalizationMonths,0), " " + MonthsNoun(Length)
+            "Kapitalizacja: ", Number(CapitalizationMonths,0), " " + MonthsNoun(CapitalizationMonths)
         );
 
         if (InterestRates.Length > 1)
