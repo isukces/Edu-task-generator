@@ -1,4 +1,4 @@
-using System.Globalization;
+﻿using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Markup;
 using System.Windows.Media;
@@ -38,6 +38,10 @@ public class PackIconImageSourceConverter : MarkupExtension, IValueConverter
             return new PackIconPhosphorIconsImageSourceConverter { 
                            Thickness = Thickness 
                        }.Convert(value, targetType, parameter, culture);
+        if (value is PackIconVaadinIconsKind)
+            return new PackIconVaadinIconsImageSourceConverter { 
+                           Thickness = Thickness 
+                       }.Convert(value, targetType, parameter, culture);
         return null;
     }
 
@@ -73,6 +77,24 @@ public class PackIconPhosphorIconsImageSourceConverter : PackIconImageSourceConv
     protected override ImageSource? CreateImageSource(object value, Brush foregroundBrush, double penThickness)
     {
         var packIcon = new PackIconPhosphorIcons { Kind = (PackIconPhosphorIconsKind)value };
+
+        var geometryDrawing = new GeometryDrawing
+        {
+            Geometry = Geometry.Parse(packIcon.Data),
+            Brush = foregroundBrush,
+            Pen = new Pen(foregroundBrush, penThickness)
+        };
+
+        var drawingGroup = new DrawingGroup { Children = { geometryDrawing } };
+
+        return new DrawingImage { Drawing = drawingGroup };
+    }
+}
+public class PackIconVaadinIconsImageSourceConverter : PackIconImageSourceConverterBase<PackIconVaadinIconsKind>
+{
+    protected override ImageSource? CreateImageSource(object value, Brush foregroundBrush, double penThickness)
+    {
+        var packIcon = new PackIconVaadinIcons { Kind = (PackIconVaadinIconsKind)value };
 
         var geometryDrawing = new GeometryDrawing
         {

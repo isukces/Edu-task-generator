@@ -62,6 +62,13 @@ public class FlowDocumentHelper
         return p;
     }
 
+    public void AddDrawing(UIElement element)
+    {
+        var inlineContainer = new InlineUIContainer(element);
+        var paragraph       = new Paragraph(inlineContainer);
+        Document.Blocks.Add(paragraph);
+    }
+
     public void AddHeader(string text)
     {
         Document.Blocks.Add(new Paragraph(new Run(text))
@@ -85,6 +92,7 @@ public class FlowDocumentHelper
         p.Inlines.AddRange(runs);
         return p;
     }
+
     public Paragraph AddParagraphX(IEnumerable<object> objects)
     {
         var p = AddBlock<Paragraph>();

@@ -9,11 +9,9 @@ public class DepositCalculationTaskInfo : IEducationTaskInfo
 {
     public void Register(IChallengeOwner challenge)
     {
-        ICommand command = new RelayCommand(_ =>
-        {
-            challenge.SetContent(new DepositView());
-        });
-        var iconSrc = PackIconImageSourceConverter.ConvertIconKind(PackIconPhosphorIconsKind.PiggyBankThin, Brushes.LimeGreen); 
+        ICommand command = new RelayCommand(_ => { challenge.SetContent(new DepositView()); });
+        var iconSrc =
+            PackIconImageSourceConverter.ConvertIconKind(PackIconPhosphorIconsKind.PiggyBankThin, Brushes.LimeGreen);
         challenge.AddButton("Lokaty", command, iconSrc, "Nauka obliczania odsetek od lokat");
     }
 }

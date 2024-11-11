@@ -13,24 +13,24 @@ public interface IChallengeOwner
     void AddButton(string content, ICommand command, ImageSource? iconSrc, string hint);
 
     void SetContent(object content);
-    
 }
 
 public interface IRefreshable
 {
-     ICommand GetRefreshCommand();
+    ICommand GetRefreshCommand();
 }
 
 public interface IPrintable
 {
-     ICommand GetPrintCommand();
+    ICommand GetPrintCommand();
 }
 
 public interface IMultipleTasks
 {
-     void SetTaskCount(int count);
+    void SetTaskCount(int count);
 }
+
 public interface ISolvable
 {
-     ICommand GetSolveCommand();
+    ICommand GetSolveCommand();
 }

@@ -4,6 +4,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using XEducation.Modules;
 using XEducation.Modules.Biz.Deposits;
+using XEducation.Modules.Maths.Tales;
 
 namespace XEducation;
 
@@ -46,6 +47,7 @@ public partial class MainWindow : IChallengeOwner
 
         var challenges = new IEducationTaskInfo[]
         {
+            new TalesTaskInfo(),
             new DepositCalculationTaskInfo()
         };
         foreach (var challenge in challenges)
@@ -83,10 +85,10 @@ public partial class MainWindow : IChallengeOwner
 
     void IChallengeOwner.SetContent(object content)
     {
-        Content.Content = content;
-        RefreshCommand  = (content as IRefreshable)?.GetRefreshCommand() ?? RelayCommand.Disabled;
-        PrintCommand    = (content as IPrintable)?.GetPrintCommand() ?? RelayCommand.Disabled;
-        SolveCommand    = (content as ISolvable)?.GetSolveCommand() ?? RelayCommand.Disabled;
+        Content.Content             = content;
+        RefreshCommand              = (content as IRefreshable)?.GetRefreshCommand() ?? RelayCommand.Disabled;
+        PrintCommand                = (content as IPrintable)?.GetPrintCommand() ?? RelayCommand.Disabled;
+        SolveCommand                = (content as ISolvable)?.GetSolveCommand() ?? RelayCommand.Disabled;
         TaskCountSplitButtonEnabled = content is IMultipleTasks;
         (Content.Content as IMultipleTasks)?.SetTaskCount(TaskCount);
     }
@@ -97,16 +99,13 @@ public partial class MainWindow : IChallengeOwner
         get => (int)GetValue(TaskCountProperty);
         set => SetValue(TaskCountProperty, value);
     }
-    
-    
+
+
     public ICommand SolveCommand
     {
         get => (ICommand)GetValue(SolveCommandProperty);
         set => SetValue(SolveCommandProperty, value);
     }
-
-    public static readonly DependencyProperty SolveCommandProperty =
-        DependencyProperty.Register(nameof(SolveCommand), typeof(ICommand), typeof(Self));
 
 
     public ICommand PrintCommand
@@ -129,6 +128,9 @@ public partial class MainWindow : IChallengeOwner
     }
 
     #region Fields
+
+    public static readonly DependencyProperty SolveCommandProperty =
+        DependencyProperty.Register(nameof(SolveCommand), typeof(ICommand), typeof(Self));
 
     public static readonly DependencyProperty PrintCommandProperty =
         DependencyProperty.Register(nameof(PrintCommand), typeof(ICommand), typeof(Self));

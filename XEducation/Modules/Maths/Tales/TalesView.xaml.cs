@@ -2,15 +2,16 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+//using XEducation.Modules.Biz.Deposits;
 using XEducation.Ui;
 
-namespace XEducation.Modules.Biz.Deposits;
+namespace XEducation.Modules.Maths.Tales;
 
-using Self = DepositView;
+using Self = TalesView;
 
-public partial class DepositView : IRefreshable, IMultipleTasks, IPrintable, ISolvable
+public partial class TalesView : IRefreshable, IMultipleTasks, IPrintable, ISolvable
 {
-    public DepositView()
+    public TalesView()
     {
         printCommand = new RelayCommand(
             _ => { FlowDocumentHelper.TryPrint(GetCurrentReader()); },
@@ -69,7 +70,7 @@ public partial class DepositView : IRefreshable, IMultipleTasks, IPrintable, ISo
         if (!_canRefresh) return;
         var count = Math.Max(1, Count);
 
-        _details = DepositCalculationTask.Create(count);
+        _details = TalesTask.Create(count);
 
         var helper = new FlowDocumentHelper();
         FirstPage.Content = new FlowDocumentReader
@@ -104,7 +105,6 @@ public partial class DepositView : IRefreshable, IMultipleTasks, IPrintable, ISo
             helper.AddHeader($"Rozwiązanie zadania {i + 1}");
             _details[i].FlushTaskSolution(helper);
         }
-
         MainControl.SelectedIndex = 1;
         CommandManager.InvalidateRequerySuggested();
     }
@@ -123,7 +123,7 @@ public partial class DepositView : IRefreshable, IMultipleTasks, IPrintable, ISo
             new PropertyMetadata(10, DependencyPropertyChanged));
 
     private readonly bool                                   _canRefresh;
-    private          ImmutableArray<DepositCalculationTask> _details = [];
+    private          ImmutableArray<TalesTask> _details = [];
     private readonly RelayCommand                           _solveCommand;
 
     private readonly RelayCommand printCommand;
