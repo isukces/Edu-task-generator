@@ -2,12 +2,8 @@ using XEducation.Expressions;
 
 namespace XEducation.Modules;
 
-public sealed class RandomHelper
+public static class RandomHelper
 {
-    private RandomHelper()
-    {
-    }
-
     public static T FromOptions<T>(params T[] options)
     {
         return options[Random.Shared.Next(0, options.Length)];

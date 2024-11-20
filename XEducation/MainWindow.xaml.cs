@@ -5,6 +5,7 @@ using System.Windows.Media;
 using XEducation.Modules;
 using XEducation.Modules.Biz.Deposits;
 using XEducation.Modules.Maths.Tales;
+using XEducation.Modules.PolishLang.Renaissance;
 
 namespace XEducation;
 
@@ -48,7 +49,8 @@ public partial class MainWindow : IChallengeOwner
         var challenges = new IEducationTaskInfo[]
         {
             new TalesTaskInfo(),
-            new DepositCalculationTaskInfo()
+            new DepositCalculationTaskInfo(),
+            new RenaissanceTaskInfo()
         };
         foreach (var challenge in challenges)
             challenge.Register(this);

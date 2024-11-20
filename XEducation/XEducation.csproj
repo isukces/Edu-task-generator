@@ -31,4 +31,9 @@
         </Compile>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Modules\PolishLang\Renaissance\Resources\*.md" />
+      <EmbeddedResource Include="Modules\PolishLang\Renaissance\Resources\*.md" />
+    </ItemGroup>
+
 </Project>
