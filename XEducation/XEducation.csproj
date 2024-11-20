@@ -1,39 +1,39 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <OutputType>WinExe</OutputType>
-        <TargetFramework>net8.0-windows</TargetFramework>
-        <Nullable>enable</Nullable>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <UseWPF>true</UseWPF>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <PackageReference Include="iSukces.Math" Version="1.24.1016.127" />
-        <PackageReference Include="iSukces.Translation" Version="1.24.1016.13"/>
-        <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="5.1.0"/>
-        <PackageReference Include="MahApps.Metro.IconPacks.PhosphorIcons" Version="5.1.0"/>
-        <PackageReference Include="MahApps.Metro.IconPacks.VaadinIcons" Version="5.1.0"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <None Update="Ui\IconConverters.tt">
-            <Generator>TextTemplatingFileGenerator</Generator>
-            <LastGenOutput>IconConverters.cs</LastGenOutput>
-        </None>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Compile Update="Ui\IconConverters.cs">
-            <AutoGen>True</AutoGen>
-            <DesignTime>True</DesignTime>
-            <DependentUpon>IconConverters.tt</DependentUpon>
-        </Compile>
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="Modules\PolishLang\Renaissance\Resources\*.md" />
-      <EmbeddedResource Include="Modules\PolishLang\Renaissance\Resources\*.md" />
-    </ItemGroup>
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <AssemblyVersion>1.24.1120.2</AssemblyVersion>
+    <FileVersion>1.24.1120.2</FileVersion>
+    <AssemblyFileVersion>1.24.1120.2</AssemblyFileVersion>
+    <Version>1.24.1120.2</Version>
+    <ApplicationIcon>teacher-icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="iSukces.Math" Version="1.24.1016.127" />
+    <PackageReference Include="iSukces.Translation" Version="1.24.1016.13" />
+    <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="5.1.0" />
+    <PackageReference Include="MahApps.Metro.IconPacks.PhosphorIcons" Version="5.1.0" />
+    <PackageReference Include="MahApps.Metro.IconPacks.VaadinIcons" Version="5.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Ui\IconConverters.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IconConverters.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Ui\IconConverters.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IconConverters.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Modules\PolishLang\Renaissance\Resources\*.md" />
+    <EmbeddedResource Include="Modules\PolishLang\Renaissance\Resources\*.md" />
+  </ItemGroup>
 </Project>
