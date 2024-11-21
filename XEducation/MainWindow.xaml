@@ -8,6 +8,7 @@
         xmlns:xEducation="clr-namespace:XEducation"
         xmlns:sys="clr-namespace:System;assembly=System.Runtime"
         mc:Ignorable="d"
+        Icon="teacher-icon.ico"
         Title="XEducation" Height="450" Width="800">
     <RibbonWindow.Resources>
         <ResourceDictionary>
