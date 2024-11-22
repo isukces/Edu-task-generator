@@ -2,11 +2,12 @@
 ; #define dotnet_Passive
 ; #define dontuse_dotnetfx45
 ; #define use_dotnetfx461
-; #include "scripts\xInnoDependencyInstaller\CodeDependencies.iss"
+#include "scripts\xInnoDependencyInstaller\CodeDependencies.iss"
+#include "netcore8.iss"
 
 [Languages]
 Name: en; MessagesFile: compiler:Default.isl
-; Name: de; MessagesFile: compiler:Languages\German.isl
+Name: de; MessagesFile: compiler:Languages\German.isl
 Name: pl; MessagesFile: compiler:Languages\Polish.isl
 ; Name: nl; MessagesFile: compiler:Languages\Dutch.isl
 ; Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
@@ -58,8 +59,13 @@ Source: "..\XEducation\bin\Release\net8.0-windows\XEducation.deps.json"; DestDir
 Source: "..\XEducation\bin\Release\net8.0-windows\XEducation.dll"; DestDir: "{app}"; Flags: ignoreversion replacesameversion
 Source: "..\XEducation\bin\Release\net8.0-windows\XEducation.exe"; DestDir: "{app}"; Flags: ignoreversion replacesameversion
 Source: "..\XEducation\bin\Release\net8.0-windows\XEducation.runtimeconfig.json"; DestDir: "{app}"; Flags: ignoreversion replacesameversion
+Source: "scripts\xInnoDependencyInstaller\netcorecheck.exe"; Flags: dontcopy noencryption
+Source: "scripts\xInnoDependencyInstaller\netcorecheck_x64.exe"; Flags: dontcopy noencryption
 
 [InstallDelete]
+
+[ThirdParty]
+; CompileLogFile=install-log.txt
 
 [Icons]
 Name: "{group}\XEducation"; Filename: "{app}\XEducation.exe"; WorkingDir: "{app}"; Flags: runmaximized; IconFilename: "{app}\XEducation.exe"; IconIndex: 0
@@ -68,3 +74,31 @@ Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\XEducation"; Filen
 
 [Registry]
  
+[Run]
+; Filename: "taskkill"; Parameters: "/im ""conexx.total.exe"" /f"; Flags: runhidden
+#include "scripts\products.iss"
+#include "scripts\products\winversion.iss"
+#include "scripts\products\fileversion.iss"
+
+#ifdef use_dotnetfx40
+#include "scripts\products\dotnetfx40full.iss"
+#endif
+#ifdef use_dotnetfx45
+#include "scripts\products\dotnetfxversion.iss"
+#include "scripts\products\dotnetfx45full.iss"
+#endif
+
+#ifdef use_dotnetfx461
+#include "scripts\products\dotnetfxversion.iss"
+#include "scripts\products\dotnetfx461full.iss"
+#endif
+
+#include "scripts\products\directx9.iss"
+
+[Code]
+
+function InitializeSetup: Boolean;
+begin
+    Dependency_MyAddDotNet80Desktop();
+    Result := True;
+end;
